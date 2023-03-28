@@ -13,6 +13,7 @@
           autocomplete
           placeholder="Familiya..."
           v-model="loginUser.lname"
+          required
           class="outline outline-1 outline-offset-1 outline-white-4 shadow-fil p-4 rounded-10px placeholder:italic placeholder:text-slate-400 focus:outline-none focus:ring-sky-500 focus:ring-2"
         />
       </div>
@@ -23,6 +24,7 @@
           name="fname"
           autocomplete
           placeholder="Ism..."
+          required
           v-model="loginUser.fname"
           class="outline outline-1 outline-offset-1 outline-white-4 shadow-fil p-4 rounded-10px placeholder:italic placeholder:text-slate-400 focus:outline-none focus:ring-sky-500 focus:ring-2"
         />
@@ -34,6 +36,7 @@
           name="email"
           autocomplete
           placeholder="@mail..."
+          required
           v-model="loginUser.email"
           class="outline outline-1 outline-offset-1 outline-white-4 shadow-fil p-4 rounded-10px placeholder:italic placeholder:text-slate-400 focus:outline-none focus:ring-sky-500 focus:ring-2"
         />
@@ -45,21 +48,26 @@
           name="password"
           placeholder="Parol..."
           v-model="loginUser.password"
+          required
           class="outline outline-1 outline-offset-1 outline-white-4 shadow-fil p-4 rounded-10px placeholder:italic placeholder:text-slate-400 focus:outline-none focus:ring-sky-500 focus:ring-2"
         />
       </div>
       <div class="w-full">
-        <button
-          class="btn border border-orange-1 text-base py-3 px-9 rounded-10px w-full shadow-fil mt-6"
-          @click="pushUser"
-        >
-          Submit
-        </button>
+        <RouterLink :to="route">
+          <button
+            class="btn border border-orange-1 text-base py-3 px-9 rounded-10px w-full shadow-fil mt-6"
+            @click="pushUser"
+            type="submit"
+          >
+            Submit
+          </button>
+        </RouterLink>
       </div>
     </form>
   </div>
 </template>
 <script>
+import { RouterLink } from "vue-router";
 export default {
   data() {
     return {
@@ -71,6 +79,7 @@ export default {
         password: "",
       },
       data: [],
+      route: "/",
     };
   },
   methods: {

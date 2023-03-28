@@ -138,7 +138,21 @@ export default createStore({
       return (state.signType = payload.value);
     },
     newUserPushMethod(state, payload) {
-      payload.value.id = state.users.length + 1;
+      let users = state.users;
+      let value = payload.value;
+      value.id = users.length + 1;
+      let index = users.findIndex((user) => user.email == email);
+      if (users.length == 0) {
+        localStorage.setItem("user", value.email);
+        return users.push(value);
+      }
+      if (index == -1) {
+        users.push(payload.value);
+        localStorage.setItem("user", value.email);
+      } else {
+        return index;
+      }
+
       return state.users.push(payload.value);
     },
     loginUser(state, payload) {

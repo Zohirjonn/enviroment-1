@@ -1,7 +1,7 @@
 <template>
   <div class="relative">
     <div class="text-black-1 text-base xl:mx-auto sm:mx-5 max-w-1340px mb-24">
-      <div class="text-center mr-4 -mb-4 mt-4">
+      <div class="text-center mr-4 -mb-4 mt-4" v-if="loginShowMethod">
         <LoginBtn />
       </div>
       <div
@@ -57,6 +57,14 @@ export default {
           return true;
         }
       } else if (pathname == "/korzina") {
+        return false;
+      }
+    },
+    loginShowMethod() {
+      let user = localStorage.getItem("user");
+      if (user == null) {
+        return true;
+      } else {
         return false;
       }
     },

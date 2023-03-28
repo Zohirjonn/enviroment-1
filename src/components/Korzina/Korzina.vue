@@ -7,8 +7,8 @@
 </template>
 <script>
 import KorzinkaHead from "./head/KorzinaHead.vue";
-import KorzinkaCards from "./head/KorzinaCards.vue";
-import KozinkaFooter from "./head/KorzinaFooter.vue";
+import KorzinkaCards from "./cards/KorzinaCards.vue";
+import KozinkaFooter from "./footer/KorzinaFooter.vue";
 
 export default {
   components: {
