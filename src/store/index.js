@@ -129,10 +129,11 @@ export default createStore({
       }
     },
     changePriceMethod(state, payload) {
-      let id = payload.value[0];
-      let size = payload.value[1];
+      let id = payload.id;
+      let size = payload.size;
       let pizzaItem = state.pizzas.find((el) => el.id == id);
       let index = state.pizzas.findIndex((el) => el.id == id);
+      state.pizzas[index].price
     },
     changeSignTypeMethod(state, payload) {
       return (state.signType = payload.value);

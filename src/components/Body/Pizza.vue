@@ -177,7 +177,7 @@ export default {
       if (this.pizza.id == item.id) {
         this.pizza.size = size;
       }
-      this.$store.commit("changePriceMethod", { value: [item.id, size] });
+      this.$store.commit("changePriceMethod", { id: item.id, size: size });
     },
   },
   computed: {

@@ -5,7 +5,7 @@
 
 ::-webkit-scrollbar {
   width: 10px;
-  background: #ffffff;
+  background: theme(colors.white-4);
   border-radius: 20px;
 }
 
