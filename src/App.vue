@@ -18,8 +18,8 @@
     </div>
     <RouterLink to="korzina">
       <Korzina
-        class="fixed bottom-4 animate-bounce right-4"
-        v-if="getBasket.length > 0"
+        class="fixed bottom-4 animate-bounce right-4 hidden small:block"
+        v-if="showMethod"
       />
     </RouterLink>
     <div>
@@ -45,9 +45,20 @@ export default {
   data() {
     return {};
   },
+  methods: {},
   computed: {
     getBasket() {
       return this.$store.getters.getBasketMethod;
+    },
+    showMethod() {
+      const pathname = window.location.pathname;
+      if (this.getBasket.length > 0) {
+        if (pathname == "/") {
+          return true;
+        }
+      } else if (pathname == "/korzina") {
+        return false;
+      }
     },
   },
 };

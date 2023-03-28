@@ -149,7 +149,8 @@ export default createStore({
       if (id == 1) {
         return (state.pizzas = state.pizzas);
       } else if (id == 2) {
-        return state.pizzas.filter((item) => item.category !== 1);
+        console.log(id, "paylaodid");
+        return state.pizzas.filter((item) => item.category == 2);
       }
     },
   },
