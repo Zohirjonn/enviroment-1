@@ -5,6 +5,7 @@ export function notify(name, type, size) {
     [name + " | ", "" + type, " " + size + "-см", " +1 шт."],
     {
       position: toast.POSITION.TOP_RIGHT,
+      transition: toast.TRANSITIONS.ZOOM,
       rtl: false,
       autoClose: 600,
       limit: 3,
