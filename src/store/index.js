@@ -4,7 +4,33 @@ export default createStore({
   state: {
     pizzas: [],
     basket: [],
-    options: "1",
+    buttons: [
+      {
+        id: 1,
+        name: "Все",
+      },
+      {
+        id: 2,
+        name: "Мясные",
+      },
+      {
+        id: 3,
+        name: "Вегетарианская",
+      },
+      {
+        id: 4,
+        name: "Гриль",
+      },
+      {
+        id: 5,
+        name: "Острые",
+      },
+      {
+        id: 6,
+        name: "Закрытые",
+      },
+    ],
+    options: "0",
     signType: 0,
     users: [],
   },
@@ -39,6 +65,9 @@ export default createStore({
     },
     getUsers(state) {
       return state.users;
+    },
+    getButtons(state) {
+      return state.buttons;
     },
   },
   mutations: {
@@ -82,9 +111,9 @@ export default createStore({
     filterPizzas(state, payload) {
       state.options = payload.value;
       console.log(payload, "payload");
-      if (payload.value == 1) {
+      if (payload.value == 2) {
         return state.pizzas.sort((a, b) => a.price - b.price);
-      } else if (payload.value == 2) {
+      } else if (payload.value == 3) {
         return state.pizzas.sort((a, b) => {
           const nameA = a.name.toUpperCase(); // ignore upper and lowercase
           const nameB = b.name.toUpperCase(); // ignore upper and lowercase
@@ -94,7 +123,6 @@ export default createStore({
           if (nameA > nameB) {
             return 1;
           }
-
           // names must be equal
           return 0;
         });
@@ -106,7 +134,7 @@ export default createStore({
       let pizzaItem = state.pizzas.find((el) => el.id == id);
       let index = state.pizzas.findIndex((el) => el.id == id);
     },
-    changeSingTypeMethod(state, payload) {
+    changeSignTypeMethod(state, payload) {
       return (state.signType = payload.value);
     },
     newUserPushMethod(state, payload) {
@@ -115,6 +143,14 @@ export default createStore({
     },
     loginUser(state, payload) {
       state.users.findIndex((el) => el.email == payload.value.email);
+    },
+    filterPizzasInBtn(state, payload) {
+      const id = payload.value;
+      if (id == 1) {
+        return (state.pizzas = state.pizzas);
+      } else if (id == 2) {
+        return state.pizzas.filter((item) => item.category !== 1);
+      }
     },
   },
   action: {},

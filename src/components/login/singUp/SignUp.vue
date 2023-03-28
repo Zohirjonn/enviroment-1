@@ -49,8 +49,6 @@
         />
       </div>
       <div class="w-full">
-        <p>{{ loginUser }}</p>
-        <h1>{{ data }}</h1>
         <button
           class="btn border border-orange-1 text-base py-3 px-9 rounded-10px w-full shadow-fil mt-6"
           @click="pushUser"

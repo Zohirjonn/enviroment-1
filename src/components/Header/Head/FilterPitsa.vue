@@ -10,8 +10,9 @@
         @change="changeSelectMethod"
         v-model="key"
       >
-        <option value="1">по цене</option>
-        <option value="2">по алфавиту</option>
+        <option disabled value="0">выбирать</option>
+        <option value="2">по цене</option>
+        <option value="3">по алфавиту</option>
       </select>
     </span>
   </div>

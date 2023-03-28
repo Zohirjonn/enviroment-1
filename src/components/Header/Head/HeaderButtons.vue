@@ -9,7 +9,6 @@
       disableOnInteraction: true,
     }"
     :breakpoints="{
-      
       '@0.75': {
         slidesPerView: 1,
         spaceBetween: 8,
@@ -22,16 +21,17 @@
         slidesPerView: 3,
         spaceBetween: 15,
       },
-      
     }"
     :modules="modules"
     class="mySwiper w-full h-full"
   >
     <swiper-slide
-      class="flex text-center mb-2 justify-center items-center py-14px border-2 border-white-4 shadow-def bg-white-2 font-bold rounded-large hover:bg-white-3 duration-100 active:bg-orange-1 text-xl active:text-white-2 small:py-1 small:px-5"
-      v-for="button in buttons"
-      :key="button"
-      >{{ button }}</swiper-slide
+      class="flex text-center mb-2 justify-center items-center py-14px border-2 border-white-4 shadow-def bg-white-2 font-bold rounded-large duration-100 hover:cursor-pointer active:bg-black-2 text-xl active:text-white-2 small:py-1 small:px-5"
+      v-for="button in getButtons"
+      :key="button.id"
+      @click="fiterBtn(button.id)"
+      :class="btnId == button.id ? 'bg-black-1 text-white-1' : ''"
+      >{{ button.name }}</swiper-slide
     >
   </swiper>
 </template>
@@ -57,15 +57,20 @@ export default {
   },
   data() {
     return {
-      buttons: [
-        "Все",
-        "Мясные",
-        "Вегетарианская",
-        "Гриль",
-        "Острые",
-        "Закрытые",
-      ],
+      btnId: 1,
     };
+  },
+  methods: {
+    fiterBtn(id) {
+      this.btnId = id;
+      console.log(this.btnId, id);
+      this.$store.commit("filterPizzasInBtn", { value: id });
+    },
+  },
+  computed: {
+    getButtons() {
+      return this.$store.getters.getButtons;
+    },
   },
 };
 </script>

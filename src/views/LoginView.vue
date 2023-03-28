@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     getSignTypeMethod(item) {
-      this.$store.commit("changeSingTypeMethod", { value: item });
+      this.$store.commit("changeSignTypeMethod", { value: item });
       this.type = item;
     },
   },
