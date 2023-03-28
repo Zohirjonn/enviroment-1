@@ -24,7 +24,7 @@
     </RouterLink>
     <RouterLink :to="route == null ? '/payment' : route">
       <button
-        class="btn border bg-orange-1 border-orange-1 text-white-1 text-base py-3 px-9 rounded-large gap-2 small:px-5 small:py-4"
+        class="btn border bg-orange-1 border-orange-1 text-white-1 w-full text-base py-3 px-9 rounded-large gap-2 small:px-5 small:py-4"
         @click="paymentMethod"
       >
         Оплатить сейчас
