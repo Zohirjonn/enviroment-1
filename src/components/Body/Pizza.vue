@@ -171,7 +171,7 @@ export default {
     typesMethod(item, typeItem) {
       this.pizza.id = item.id;
       this.pizza.type = typeItem;
-      this.pizza.size = null;
+      this.pizza.size = 26;
     },
     sizeMethod(item, size) {
       if (this.pizza.id == item.id) {

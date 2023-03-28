@@ -7,12 +7,11 @@
       <select
         name="filter"
         class="px-5 border-none"
-        @click="changeSelectMethod"
+        @change="changeSelectMethod"
         v-model="key"
       >
-        <option value="1">популярности</option>
-        <option value="2">по цене</option>
-        <option value="3">по алфавиту</option>
+        <option value="1">по цене</option>
+        <option value="2">по алфавиту</option>
       </select>
     </span>
   </div>
@@ -24,10 +23,10 @@ export default {
       key: this.$store.getters.getOptions,
     };
   },
-  method: {
+  methods: {
     changeSelectMethod(value) {
-      console.log(value);
-      this.$store.commit("filterBasket", { value: this.key });
+      console.log(value, "SDFASDFASD");
+      this.$store.commit("filterPizzas", { value: this.key });
     },
   },
   computed: {

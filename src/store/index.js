@@ -4,42 +4,65 @@ export default createStore({
   state: {
     pizzas: [],
     basket: [],
-    options: "3",
+    options: "1",
     signType: 0,
     signUpInputs: [
       {
         id: 1,
+        name: "lname",
         type: "text",
         label: "Familiyangizni kiriting",
         placeholder: "Familiya...",
+        autocomplete: false,
+        // model: ,
       },
       {
         id: 2,
+        name: "fname",
         type: "text",
         label: "Ismingizni kiriting",
         placeholder: "Ism...",
+        autocomplete: false,
+        // model: {fname},
       },
       {
         id: 3,
+        name: "email",
         type: "email",
         label: "Emailingizni kiriting",
         placeholder: "Email...",
+        autocomplete: true,
+        // model: {email},
       },
       {
         id: 4,
+        name: "password",
         type: "password",
         label: "Parol yarating",
         placeholder: "Parol...",
+        autocomplete: false,
+        // model: {password},
       },
     ],
     signInInputs: [
-      { id: 1, label: "Emailingizni kiriting", placeholder: "Email..." },
+      {
+        id: 1,
+        name: "email",
+        type: "email",
+        label: "Emailingizni kiriting",
+        placeholder: "Email...",
+        autocomplete: true,
+      },
       {
         id: 2,
+        name: "password",
+        type: "password",
         label: "Parolni kiriting",
         placeholder: "parol...",
+        autocomplete: true,
       },
     ],
+    users: [],
   },
   getters: {
     getBasketMethod(state) {
@@ -63,12 +86,15 @@ export default createStore({
     getSignType(state) {
       return state.signType;
     },
-    getSignType(state) {
-      if (state.signType) {
+    getSignTypeInputs(state) {
+      if (state.signType == 1) {
         return state.signInInputs;
-      } else {
+      } else if (state.signType == 0) {
         return state.signUpInputs;
       }
+    },
+    getUsers(state) {
+      return state.users;
     },
   },
   mutations: {
@@ -109,11 +135,26 @@ export default createStore({
       );
       return (state.basket = res);
     },
-    filterBasket(state, payload) {
-      return (state.options = payload.value);
-      // state.pizzas = state.pizzas.sort(
-      //   (a, b) => a.name.toUpperCase() - b.name.toUpperCase()
-      // );
+    filterPizzas(state, payload) {
+      state.options = payload.value;
+      console.log(payload, "payload");
+      if (payload.value == 1) {
+        return state.pizzas.sort((a, b) => a.price - b.price);
+      } else if (payload.value == 2) {
+        return state.pizzas.sort((a, b) => {
+          const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+          const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+
+          // names must be equal
+          return 0;
+        });
+      }
     },
     changePriceMethod(state, payload) {
       let id = payload.value[0];
@@ -123,6 +164,13 @@ export default createStore({
     },
     changeSingTypeMethod(state, payload) {
       return (state.signType = payload.value);
+    },
+    newUserPushMethod(state, payload) {
+      payload.value.id = state.users.length + 1;
+      return state.users.push(payload.value);
+    },
+    loginUser(state, payload) {
+      state.users.findIndex((el) => el.email == payload.value.email);
     },
   },
   action: {},
