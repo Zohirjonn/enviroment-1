@@ -26,11 +26,11 @@
     class="mySwiper w-full h-full"
   >
     <swiper-slide
-      class="flex text-center mb-2 justify-center items-center py-14px border-2 border-white-4 shadow-def bg-white-2 font-bold rounded-large duration-100 hover:cursor-pointer active:bg-black-2 text-xl active:text-white-2 small:py-1 small:px-5"
+      class="flex text-center mb-2 justify-center items-center py-14px border-2 border-white-4 shadow-def  font-bold rounded-large duration-100 hover:cursor-pointer active:bg-black-2 text-xl active:text-white-2 small:py-1 small:px-5"
       v-for="button in getButtons"
       :key="button.id"
       @click="fiterBtn(button.id)"
-      :class="btnId == button.id ? 'bg-black-1 text-white-1' : ''"
+      :class="btnId == button.id ? 'bg-black-1 text-white-1' : 'bg-white-2'"
       >{{ button.name }}</swiper-slide
     >
   </swiper>
