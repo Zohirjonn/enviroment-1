@@ -1,13 +1,15 @@
 <template>
   <div class="relative">
     <div class="text-black-1 text-base xl:mx-auto sm:mx-5 max-w-1340px mb-24">
+      <div class="text-center mr-4 -mb-4 mt-4">
+        <LoginBtn />
+      </div>
       <div
         class="flex justify-between border-b-2 border-white-4 py-40px mb-5 mx-4"
       >
         <RouterLink to="/">
           <Navtop />
         </RouterLink>
-        <LoginBtn />
         <RouterLink to="/korzina">
           <Korzina />
         </RouterLink>

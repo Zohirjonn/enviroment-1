@@ -1,7 +1,7 @@
 <template>
   <RouterLink to="/login">
     <button
-      class="btn border border-orange-1 text-base py-3 px-9 rounded-large"
+      class="btn border border-orange-1 text-base py-1 shaddow-fil px-9 rounded-large"
     >
       Tizimga kirish
     </button>
