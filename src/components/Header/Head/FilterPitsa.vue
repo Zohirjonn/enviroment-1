@@ -26,7 +26,6 @@ export default {
   },
   methods: {
     changeSelectMethod(value) {
-      console.log(value, "SDFASDFASD");
       this.$store.commit("filterPizzas", { value: this.key });
     },
   },
