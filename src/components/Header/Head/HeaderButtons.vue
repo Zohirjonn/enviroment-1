@@ -63,7 +63,6 @@ export default {
   methods: {
     fiterBtn(id) {
       this.btnId = id;
-      console.log(this.btnId, id);
       this.$store.commit("filterPizzasInBtn", { value: id });
     },
   },
